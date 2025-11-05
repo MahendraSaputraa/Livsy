@@ -10,8 +10,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import images from "@/constants/images";
+import { Link, useRouter } from "expo-router";
 
 const SignUp = () => {
+  const router = useRouter();
   return (
     <SafeAreaView className="h-full bg-white">
       <ScrollView
@@ -50,7 +52,7 @@ const SignUp = () => {
             ></TextInput>
           </View>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => router.push("/")}
             className="w-full py-4 mt-8 rounded-full shadow-md bg-primary-300 shadow-zinc-300"
           >
             <Text className="text-lg text-center text-white font-rubik ">
@@ -63,9 +65,11 @@ const SignUp = () => {
             <Text className="px-3 text-gray-400">or</Text>
             <View className="h-[1px] bg-gray-200 flex-1" />
           </View>
-          <Text className="text-base text-center mt-14 font-rubik text-black-300">
-            Dont have Account?
-            <Text className="font-bold text-primary-300"> Sign In</Text>
+          <Text className="text-base text-center font-rubik text-black-300">
+            Dont have Account?{" "}
+            <Link href={"/sign-in"} className="font-bold text-primary-300">
+              Sign In
+            </Link>
           </Text>
         </View>
       </ScrollView>

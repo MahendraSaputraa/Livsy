@@ -14,7 +14,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView className="bg-white h-full">
+    <SafeAreaView className="h-full bg-white">
       <ScrollView
         contentContainerStyle={{
           height: "100%",
@@ -22,16 +22,16 @@ const HomeScreen = () => {
       >
         <Image
           source={images.onboarding}
-          className="w-full object-cover h-4/6"
+          className="object-cover w-full h-4/6"
           resizeMode="contain"
         />
 
         <View className="px-10">
           <Text className="text-base text-center uppercase font-rubik text-black-200">
-            Welcome To Vorverty
+            Welcome To Livsy
           </Text>
 
-          <Text className="text-3xl font-rubik-bold text-black-300 text-center mt-2">
+          <Text className="mt-2 text-3xl text-center font-rubik-bold text-black-300">
             Lets Get You Closer To
             <Text className="text-primary-300">Your Ideal Home</Text>
           </Text>
@@ -41,15 +41,15 @@ const HomeScreen = () => {
               onPress={handleSignIn}
               className="bg-white border-[1px] border-primary-300 shadow-md shadow-zinc-300 rounded-full w-6/12  py-4 mt-5"
             >
-              <Text className="text-lg font-rubik text-primary-300 text-center ">
+              <Text className="text-lg text-center font-rubik text-primary-300 ">
                 Sign in
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={handleSignUp}
-              className="bg-primary-300 shadow-md shadow-zinc-300 rounded-full w-6/12 py-4 mt-5"
+              className="w-6/12 py-4 mt-5 rounded-full shadow-md bg-primary-300 shadow-zinc-300"
             >
-              <Text className="text-lg font-rubik text-white text-center ">
+              <Text className="text-lg text-center text-white font-rubik ">
                 Sign Up
               </Text>
             </TouchableOpacity>
