@@ -7,11 +7,12 @@ import {
   FlatList,
   Image,
   Linking,
+  Modal,
   Platform,
   ScrollView,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 
 import { auth, db } from "@/firebase/config";
@@ -58,6 +59,8 @@ interface Owner {
 /* ================= SCREEN ================= */
 
 export default function PropertyDetail() {
+  const [isImageVisible, setIsImageVisible] = useState(false);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   const [buyerName, setBuyerName] = useState<string>("Pengguna Livsy");
   const { id } = useLocalSearchParams<{ id: string }>();
   const windowHeight = Dimensions.get("window").height;
@@ -289,11 +292,20 @@ mohon petunjuknya ya!
                 keyExtractor={(_, i) => i.toString()}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => {
+                    setActiveImage(item);
+                    setIsImageVisible(true);
+                  }}
+                >
                   <Image
                     source={{ uri: item }}
                     className="mr-4 size-40 rounded-xl"
                   />
-                )}
+                </TouchableOpacity>
+              )}
+
                 className="mt-3"
               />
             </View>
@@ -309,6 +321,37 @@ mohon petunjuknya ya!
             />
           </View>
         </View>
+        <Modal
+          visible={isImageVisible}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setIsImageVisible(false)}
+        >
+          <View className="flex-1 bg-black justify-center items-center">
+            {/* Tombol tutup */}
+            <TouchableOpacity
+              className="absolute top-10 right-6 z-10"
+              onPress={() => setIsImageVisible(false)}
+            >
+              <Text className="text-white text-lg font-rubik-bold">
+                Tutup
+              </Text>
+            </TouchableOpacity>
+
+            {/* Gambar fullscreen */}
+            {activeImage && (
+              <Image
+                source={{ uri: activeImage }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  resizeMode: "contain",
+                }}
+              />
+            )}
+          </View>
+        </Modal>
+
       </ScrollView>
 
       {/* BUY */}
@@ -329,4 +372,5 @@ mohon petunjuknya ya!
       </View>
     </View>
   );
+  
 }
