@@ -60,6 +60,8 @@ export const categories = [
   { title: "Houses", category: "House" },
   { title: "Villas", category: "Villa" },
   { title: "Apartments", category: "Apartments" },
+  { title: "Land", category: "Land" },
+  { title: "Ruko", category: "Ruko" },
 ];
 
 export const settings = [

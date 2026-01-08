@@ -255,6 +255,8 @@ export default function AddPropertyScreen() {
               { label: "House", value: "House" },
               { label: "Apartment", value: "Apartment" },
               { label: "Villa", value: "Villa" },
+              { label: "Land", value: "Land" },
+              { label: "Ruko", value: "Ruko" },
             ]}
           />
 
