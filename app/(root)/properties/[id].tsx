@@ -178,7 +178,7 @@ mohon petunjuknya ya!
 
   if (loading) {
     return (
-      <View className="flex-1 items-center justify-center">
+      <View className="items-center justify-center flex-1">
         <ActivityIndicator size="large" />
       </View>
     );
@@ -192,7 +192,7 @@ mohon petunjuknya ya!
     <View className="flex-1 bg-white">
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerClassName="pb-44"
+        contentContainerClassName="pb-56"
       >
         {/* COVER */}
         <View className="relative w-full" style={{ height: windowHeight / 2 }}>
@@ -213,20 +213,20 @@ mohon petunjuknya ya!
           >
             <TouchableOpacity
               onPress={() => router.back()}
-              className="size-11 bg-primary-200 rounded-full items-center justify-center"
+              className="items-center justify-center rounded-full size-11 bg-primary-200"
             >
               <Image source={icons.backArrow} className="size-5" />
             </TouchableOpacity>
           </View>
         </View>
 
-        <View className="px-5 mt-7 gap-2">
+        <View className="gap-2 px-5 mt-7">
           {/* TITLE */}
           <Text className="text-2xl font-rubik-extrabold">
             {property.title}
           </Text>
 
-          <View className="px-4 py-2 rounded-full bg-primary-100 self-start">
+          <View className="self-start px-4 py-2 rounded-full bg-primary-100">
             <Text className="text-xs font-rubik-bold text-primary-300">
               {property.type}
             </Text>
@@ -237,31 +237,29 @@ mohon petunjuknya ya!
             <View className="flex flex-row items-center justify-center rounded-full bg-primary-100 size-10">
               <Image source={icons.bed} className="size-4" />
             </View>
-            <Text className="mr-4">{property.bedrooms} Beds</Text>
+            <Text className="ml-4">{property.bedrooms} Beds</Text>
             <View className="flex flex-row items-center justify-center rounded-full bg-primary-100 size-10 ml-7">
               <Image source={icons.bath} className="size-4" />
             </View>
-            <Text className="mr-4">{property.bathrooms} Baths</Text>
+            <Text className="ml-4">{property.bathrooms} Baths</Text>
             <View className="flex flex-row items-center justify-center rounded-full bg-primary-100 size-10 ml-7">
               <Image source={icons.area} className="size-4" />
             </View>
-            <Text>
+            <Text className="ml-4">
               {property.area} {property.areaUnit}
             </Text>
           </View>
 
           {/* OWNER */}
-          <View className="mt-6 border-t pt-6">
+          <View className="pt-6 mt-6 border-t">
             <Text className="text-xl font-rubik-bold">Owner</Text>
 
             <View className="flex-row items-center mt-4">
               <Image
                 source={
-                  owner?.photoURL
-                    ? { uri: owner.photoURL }
-                    : images.avatar
+                  owner?.photoURL ? { uri: owner.photoURL } : images.avatar
                 }
-                className="size-14 rounded-full"
+                className="rounded-full size-14"
               />
 
               <View className="ml-3">
@@ -278,9 +276,7 @@ mohon petunjuknya ya!
           {/* OVERVIEW */}
           <View className="mt-7">
             <Text className="text-xl font-rubik-bold">Overview</Text>
-            <Text className="mt-2 text-black-200">
-              {property.description}
-            </Text>
+            <Text className="mt-2 text-black-200">{property.description}</Text>
           </View>
 
           {/* GALLERY */}
@@ -295,7 +291,7 @@ mohon petunjuknya ya!
                 renderItem={({ item }) => (
                   <Image
                     source={{ uri: item }}
-                    className="size-40 rounded-xl mr-4"
+                    className="mr-4 size-40 rounded-xl"
                   />
                 )}
                 className="mt-3"
@@ -316,7 +312,7 @@ mohon petunjuknya ya!
       </ScrollView>
 
       {/* BUY */}
-      <View className="absolute bottom-0 w-full bg-white border-t p-7 rounded-t-2xl">
+      <View className="absolute bottom-0 w-full px-6 pt-6 bg-white shadow-xl pb-14 rounded-t-2xl">
         <Text className="text-xs text-black-200">Price</Text>
         <Text className="text-2xl font-rubik-bold text-primary-300">
           Rp {property.price.toLocaleString("id-ID")}
@@ -324,7 +320,7 @@ mohon petunjuknya ya!
 
         <TouchableOpacity
           onPress={handleBuyProperty}
-          className="mt-5 py-3 rounded-full bg-primary-300"
+          className="py-3 mt-5 rounded-full bg-primary-300"
         >
           <Text className="text-lg text-center text-white font-rubik-bold">
             Buy Property

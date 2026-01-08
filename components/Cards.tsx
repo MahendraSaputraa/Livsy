@@ -1,4 +1,5 @@
 import images from "@/constants/images";
+import { truncateText } from "@/src/utils/utils";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 /* ================= TYPES ================= */
@@ -49,9 +50,7 @@ export const FeaturedCard = ({
   image,
   onPress,
 }: BaseCardProps) => {
-  const status = listingStatus
-    ? STATUS_CONFIG[listingStatus]
-    : null;
+  const status = listingStatus ? STATUS_CONFIG[listingStatus] : null;
 
   return (
     <TouchableOpacity
@@ -120,18 +119,16 @@ export const Card = ({
   image,
   onPress,
 }: BaseCardProps) => {
-  const status = listingStatus
-    ? STATUS_CONFIG[listingStatus]
-    : null;
+  const status = listingStatus ? STATUS_CONFIG[listingStatus] : null;
 
   return (
     <TouchableOpacity
-      className="relative flex-1 w-full px-3 py-4 mt-4 bg-white rounded-lg shadow-lg shadow-black-100/70"
+      className="relative w-6/12 px-3 py-4 mt-4 bg-white rounded-lg shadow-lg shadow-black-100/70"
       onPress={onPress}
     >
       {/* TYPE */}
       {type && (
-        <View className="absolute z-50 top-5 left-5 bg-white/90 px-2 py-1 rounded-full">
+        <View className="absolute z-50 px-2 py-1 rounded-full top-5 left-5 bg-white/90">
           <Text className="text-xs font-rubik-bold text-primary-300">
             {type}
           </Text>
@@ -156,15 +153,13 @@ export const Card = ({
 
       <View className="flex flex-col mt-2">
         <Text className="text-base font-rubik-bold text-black-300">
-          {title}
+          {truncateText(title, 18)}
         </Text>
-        <Text className="text-xs font-rubik text-black-100">
-          {city}
-        </Text>
+        <Text className="text-xs font-rubik text-black-100">{city}</Text>
 
         {price !== undefined && (
           <Text className="mt-2 text-base font-rubik-bold text-primary-300">
-            Rp {price.toLocaleString("id-ID")}
+            Rp {truncateText(price.toLocaleString("id-ID"), 10)}
           </Text>
         )}
       </View>
